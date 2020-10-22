@@ -1,28 +1,22 @@
 class RentalsController < ApplicationController
-  before_action :set_rental, only: [:show, :edit, :update, :destroy]
+  before_action :set_rental, only: %i(show edit update destroy)
 
-  # GET /rentals
-  # GET /rentals.json
   def index
     @rentals = Rental.all
   end
 
-  # GET /rentals/1
-  # GET /rentals/1.json
   def show
   end
 
-  # GET /rentals/new
   def new
     @rental = Rental.new
+    2.times { @rental.depot.build }
   end
 
-  # GET /rentals/1/edit
   def edit
+    @rental.depot.build
   end
 
-  # POST /rentals
-  # POST /rentals.json
   def create
     @rental = Rental.new(rental_params)
 
@@ -37,8 +31,6 @@ class RentalsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /rentals/1
-  # PATCH/PUT /rentals/1.json
   def update
     respond_to do |format|
       if @rental.update(rental_params)
@@ -51,8 +43,6 @@ class RentalsController < ApplicationController
     end
   end
 
-  # DELETE /rentals/1
-  # DELETE /rentals/1.json
   def destroy
     @rental.destroy
     respond_to do |format|
@@ -62,13 +52,12 @@ class RentalsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_rental
-      @rental = Rental.find(params[:id])
-    end
+  def set_rental
+    @rental = Rental.find(params[:id])
+  end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def rental_params
-      params.require(:rental).permit(:name, :rent, :address, :age, :feedback)
-    end
+  def rental_params
+    params.require(:rental).permit(:name, :rent, :address, :age, :feedback,
+                                  depot_attributes: %i(id route station walking_distance))
+  end
 end

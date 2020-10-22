@@ -3,4 +3,10 @@ class Rental < ApplicationRecord
   validates :rent, presence: true
   validates :address, presence: true
   validates :age, presence: true
+
+  has_many :depots, dependent: :destroy, inverse_of: :rental
+
+  accepts_nested_attributes_for :depots,
+                                allow_destroy: true,
+                                reject_if: :all_blank
 end
