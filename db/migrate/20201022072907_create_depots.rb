@@ -4,7 +4,7 @@ class CreateDepots < ActiveRecord::Migration[5.2]
       t.string :route
       t.integer :station
       t.string :walking_distance
-      t.references :property, foreign_key: true
+      t.references :rental, foreign_key: true
 
       t.timestamps
     end
