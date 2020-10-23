@@ -7,7 +7,7 @@ class CreateRentals < ActiveRecord::Migration[5.2]
       t.integer :age
       t.text :feedback
 
-      t.timestamps
+      t.timestamps      
     end
   end
 end

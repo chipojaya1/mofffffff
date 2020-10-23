@@ -10,12 +10,12 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_10_22_072907) do
+ActiveRecord::Schema.define(version: 2020_10_23_094608) do
 
   create_table "depots", force: :cascade do |t|
     t.string "route"
-    t.integer "station"
-    t.string "walking_distance"
+    t.string "station"
+    t.integer "walking_distance"
     t.integer "rental_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
