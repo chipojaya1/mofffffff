@@ -19,12 +19,12 @@
     <%= form.number_field :age, placeholder: 'Your current age' %>
     <%= form.text_field :feedback, placeholder: 'Feedback' %>
       <div class="station_form">
-        <% @rental.depots.each_with_index do |station, index| %>
+        <% @property.depots.each_with_index do |station, index| %>
         <%= form.fields_for :depots, station do |depots_form| %>
-        <h2>Closest train station<%= index + 1 %></h2>
+        <h2>Closest train depot<%= index + 1 %></h2>
         <%= depots_form.text_field :route, placeholder: "Route" %>
         <%= depots_form.text_field :station, placeholder: "Closest station"%>
-        <%= depots_form.number_field :walking_distance, placeholder: "Walking distance time" %>
+        <%= depots_form.text_field :walking_distance, placeholder: "Walking distance time" %>
       </div>
       <% end %>
       <% end %>

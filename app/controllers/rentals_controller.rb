@@ -10,7 +10,7 @@ class RentalsController < ApplicationController
 
   def new
     @rental = Rental.new
-    2.times { @rental.depots.build }
+    2.times { @rental.depot.build }
   end
 
   def edit
