@@ -1,3 +1,3 @@
 class Depot < ApplicationRecord
-  belongs_to: rental, inverse_of: :depots
+  belongs_to: rental, optional: true
 end

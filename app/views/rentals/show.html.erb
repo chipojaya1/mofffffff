@@ -7,9 +7,8 @@
   <p>Age:<%= @rental.age %>years</p>
   <p>Feedback:<%= @rental.feedback %></p>
 
-  <% n = 0 %>
-  <% @rental.depots.each do |depot|%>
-    <p>Closest train depots <%= n += 1 %></p>
+  <% @depots.each_with_index do |depot,i| %>
+    <h3>Nearest stations <%= "#{(i)+1}" %></h3>
     <p>Route:<%= depot.route %></p>
     <p>Station:<%= depot.station %></p>
     <p>Time:<%= depot.walking_distance %>minutes</p>

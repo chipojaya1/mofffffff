@@ -6,11 +6,12 @@ class RentalsController < ApplicationController
   end
 
   def show
+    @depots = @rental.depots
   end
 
   def new
     @rental = Rental.new
-    2.times { @rental.depots.build }
+    2.times{@rental.depots.build}
   end
 
   def edit
@@ -58,6 +59,6 @@ class RentalsController < ApplicationController
 
   def rental_params
     params.require(:rental).permit(:name, :rent, :address, :age, :feedback,
-                                  depot_attributes: %i(id route station walking_distance))
+                                  depots_attributes: %i(id route station walking_distance))
   end
 end
