@@ -15,7 +15,7 @@ class RentalsController < ApplicationController
   end
 
   def edit
-    @rental.depot.build
+    @rental.depots.build
   end
 
   def create
