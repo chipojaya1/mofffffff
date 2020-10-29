@@ -1,4 +1,5 @@
-<article>
+<%= form_for(@rental) do |form| %>
+<article class="container">
   <% if @rental.errors.any? %>
     <% @rental.errors.full_messages.each do |message| %>
       <ul>
@@ -6,13 +7,12 @@
           <li><%= message %></li>
         </div>
       </ul>
-      <% end %>
+    <% end %>
   <% end %>
 
   <div class='property_form'>
     <h1>MOFMOF</h1>
     <p> Please fill in </p>
-    <%= form_with(model: @rental, local: true) do |form| %>
     <%= form.text_field :name, placeholder: 'Property Name' %>
     <%= form.number_field :rent, placeholder: 'Rent' %>
     <%= form.text_field :address, placeholder: 'Property Address' %>
@@ -32,6 +32,6 @@
     <div class='property_form_button'>
       <%= form.submit 'submit' %>
     </div>
-  <% end %>
-  </div>
-</article>
+    </div>
+  </article>
+<% end %>

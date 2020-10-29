@@ -59,6 +59,6 @@ class RentalsController < ApplicationController
 
   def rental_params
     params.require(:rental).permit(:name, :rent, :address, :age, :feedback,
-                                  depots_attributes: %i(id route station walking_distance))
+                                  depots_attributes: %i(id route station walking_distance rental_id _destroy]))
   end
 end
